@@ -329,6 +329,7 @@ $wgCapitalLinks = false;
 $baseURL = str_replace('%domain%', $wmgDefaultDomain, $wmgBaseURL);
 $regex = str_replace('%wiki%', '([\w\-]+)', preg_quote($baseURL, '/'));
 $wgRedirectSources = "/^{$regex}$/i";
+unset($baseURL, $regex);
 
 //<< Interwiki cache >>
 
@@ -573,6 +574,35 @@ $wgRemoveGroups = [
   'admin' => ['moderator', 'staff']
 ];
 
+if ($wmgGlobalAccountMode === null) {
+  $wgGroupPermissions['steward']['userrights'] = true;
+}
+
+if ($wmgGlobalAccountMode !== 'centralauth') {
+  $wgGroupInheritsPermissions['steward'] = 'admin';
+  $wgGroupPermissions['steward'] = [
+    'apihighlimits' => true,
+    'bigdelete' => true,
+    'blockemail' => true,
+    'editprotected-steward' => true,
+    'editsitejs' => true,
+    'edituserjs' => true,
+    'hideuser' => true,
+    'import' => true,
+    'importupload' => true,
+    'nominornewtalk' => true,
+    'noratelimit' => true,
+    'override-export-depth' => true,
+    'pagelang' => true,
+    'siteadmin' => true,
+    'suppressionlog' => true,
+    'suppressrevision' => true,
+    'unblockself' => true,
+    'upload_by_url' => true
+  ];
+  $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['staff'], $wgGroupPermissions['steward']);
+}
+
 $wgRateLimits = array_merge($wgRateLimits, [
   'edit' => [
     'subnet' => [3, 60],
@@ -675,35 +705,6 @@ $wgRateLimits = array_merge($wgRateLimits, [
 ]);
 $wgRateLimits['rollback'] = $wgRateLimits['edit'];
 $wgRateLimits['confirmemail'] = $wgRateLimits['changeemail'];
-
-if ($wmgGlobalAccountMode === null) {
-  $wgGroupPermissions['steward']['userrights'] = true;
-}
-
-if ($wmgGlobalAccountMode !== 'centralauth') {
-  $wgGroupInheritsPermissions['steward'] = 'admin';
-  $wgGroupPermissions['steward'] = [
-    'apihighlimits' => true,
-    'bigdelete' => true,
-    'blockemail' => true,
-    'editprotected-steward' => true,
-    'editsitejs' => true,
-    'edituserjs' => true,
-    'hideuser' => true,
-    'import' => true,
-    'importupload' => true,
-    'nominornewtalk' => true,
-    'noratelimit' => true,
-    'override-export-depth' => true,
-    'pagelang' => true,
-    'siteadmin' => true,
-    'suppressionlog' => true,
-    'suppressrevision' => true,
-    'unblockself' => true,
-    'upload_by_url' => true
-  ];
-  $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['staff'], $wgGroupPermissions['steward']);
-}
 
 //<< Access >>
 
