@@ -131,4 +131,9 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 
 //<< Vector >>
 
+// 1.40+
+$wgVectorArticleTools = [
+  'logged_in' => true,
+  'logged_out' => true
+];
 $wgVectorVisualEnhancementNext = true;
