@@ -12,6 +12,15 @@ $wgLogos = [
   'icon' => "/resources/per-wiki/$wmgWiki/logos/logo-2x.png"
 ];
 
+//< Files and file uploads >
+
+//<< Images >>
+
+//<<< Thumbnail settings >>>
+
+// 1.40+
+$wgThumbnailNamespaces = [NS_FILE, NS_HELP, NS_MAIN, NS_PROJECT, NS_USER];
+
 //< ResourceLoader >
 
 $wgAllowSiteCSSOnRestrictedPages = true;
