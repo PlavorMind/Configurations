@@ -539,7 +539,6 @@ $wgGroupPermissions = [
     'move' => true,
     'move-rootuserpages' => true,
     'movefile' => true,
-    'purge' => true,
     'reupload' => true,
     'sendemail' => true,
     'upload' => true
