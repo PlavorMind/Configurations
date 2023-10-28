@@ -25,6 +25,11 @@ $wgThumbnailNamespaces = [NS_FILE, NS_HELP, NS_MAIN, NS_PROJECT, NS_USER];
 
 $wgAllowSiteCSSOnRestrictedPages = true;
 
+if ($wmgDebugLevel >= 1) {
+  // 1.41+
+  $wgResourceLoaderEnableSourceMapLinks = true;
+}
+
 //< Page titles and redirects >
 
 //<< Namespaces >>
@@ -62,13 +67,6 @@ $wgFilterLogTypes['create'] = true;
 //< Miscellaneous settings >
 
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
-
-//< Not listed yet >
-
-if ($wmgDebugLevel >= 1) {
-  // 1.41+
-  $wgResourceLoaderEnableSourceMapLinks = true;
-}
 
 //< Extensions >
 
