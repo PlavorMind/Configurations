@@ -1236,6 +1236,8 @@ if ($wmgUseExtensions['Echo']) {
   $wgConditionalUserOptions['echo-subscriptions-web-article-linked'] = [];
   // 1.42+
   $wgConditionalUserOptions['echo-subscriptions-web-reverted'] = [];
+  // 1.43+
+  $wgGroupPermissions['bot']['echo-create'] = false;
   $wgGroupPermissions['push-subscription-manager']['manage-all-push-subscriptions'] = false;
 
   $wgDefaultUserOptions = array_merge($wgDefaultUserOptions, [
@@ -1255,6 +1257,10 @@ if ($wmgUseExtensions['Echo']) {
 
   if ($wmgGlobalAccountMode !== 'centralauth') {
     $wgGroupPermissions['steward']['manage-all-push-subscriptions'] = true;
+
+    if (version_compare(MW_VERSION, '1.43', '>=')) {
+      $wgGroupPermissions['steward']['echo-create'] = true;
+    }
   }
 }
 
