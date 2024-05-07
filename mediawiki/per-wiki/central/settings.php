@@ -69,11 +69,13 @@ $wgFilterLogTypes['create'] = true;
 //< Miscellaneous settings >
 
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
-
-//< Not listed yet >
-
 // 1.42+
 $wgUseCodexSpecialBlock = true;
+
+//< Not listed >
+
+// 1.43+
+$wgParserEnableLegacyHeadingDOM = false;
 
 //< Extensions >
 
