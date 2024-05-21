@@ -99,7 +99,10 @@ $wgVisualEditorEnableVisualSectionEditing = true;
 
 //<< MinervaNeue >>
 
+// 1.42+
 $wgMinervaNightMode['base'] = true;
+// 1.43+
+$wgMinervaNightMode['loggedin'] = true;
 
 //<< Vector >>
 
