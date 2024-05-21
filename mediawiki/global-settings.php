@@ -1052,6 +1052,7 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgCentralAuthAutoMigrate = true;
   $wgCentralAuthAutoMigrateNonGlobalAccounts = true;
   $wgCentralAuthCookies = true;
+  // This setting is still used for the session-related stuff in MediaWiki 1.43: https://phabricator.wikimedia.org/T348486#9813426
   $wgCentralAuthDatabase = 'wiki_centralauth';
   $wgCentralAuthGlobalBlockInterwikiPrefix = 'central';
   $wgCentralAuthGlobalPasswordPolicies['steward'] = $wgPasswordPolicy['policies']['steward'];
@@ -1075,6 +1076,8 @@ if ($wmgGlobalAccountMode === 'centralauth') {
       'centralauth-unmerge' => false
     ]
   ]);
+  // 1.43+
+  $wgVirtualDomainsMapping['virtual-centralauth']['db'] = 'wiki_centralauth';
 
   if (str_starts_with($wmgDefaultDomain, '%wiki%.') && !isset($wmgCustomDomains[$wmgWiki])) {
     $wgCentralAuthCookieDomain = preg_replace('/^%wiki%\\./', '', $wmgDefaultDomain);
@@ -1703,6 +1706,7 @@ if ($wmgUseSkins['MinervaNeue']) {
   $wgMinervaOverflowInPageActions['base'] = true;
   $wgMinervaPersonalMenu['base'] = true;
   $wgMinervaShowCategories['base'] = true;
+  $wgMinervaShowCategories['loggedin'] = true;
   $wgMinervaTalkAtTop['base'] = true;
 
   // 1.42+
