@@ -112,3 +112,5 @@ $wgVectorNightMode = [
   'logged_in' => true,
   'logged_out' => true
 ];
+// 1.43+
+$wgVectorWrapTablesTemporary = true;
