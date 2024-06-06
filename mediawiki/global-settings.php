@@ -1190,6 +1190,8 @@ if ($wmgUseExtensions['ConfirmEdit']) {
 if ($wmgUseExtensions['DiscussionTools'] && $wmgUseExtensions['Linter'] && $wmgUseExtensions['VisualEditor']) {
   // This extension requires running update.php.
   wfLoadExtension('DiscussionTools');
+  // 1.43+
+  $wgDiscussionToolsEnableThanks = false;
 }
 
 //<< Echo >>
@@ -1239,8 +1241,6 @@ if ($wmgUseExtensions['Echo']) {
   $wgConditionalUserOptions['echo-subscriptions-web-article-linked'] = [];
   // 1.42+
   $wgConditionalUserOptions['echo-subscriptions-web-reverted'] = [];
-  // 1.43+
-  $wgGroupPermissions['bot']['echo-create'] = false;
   $wgGroupPermissions['push-subscription-manager']['manage-all-push-subscriptions'] = false;
 
   $wgDefaultUserOptions = array_merge($wgDefaultUserOptions, [
@@ -1514,6 +1514,11 @@ if ($wmgUseExtensions['Popups'] && $wmgUseExtensions['PageImages'] && $wmgUseExt
   wfLoadExtension('Popups');
   $wgPopupsHideOptInOnPreferencesPage = true;
   $wgPopupsReferencePreviewsBetaFeature = false;
+
+  // 1.43+
+  $wgConditionalUserOptions['popups'] = [];
+  // 1.43+
+  $wgConditionalUserOptions['popups-reference-previews'] = [];
 }
 
 //<< QuickInstantCommons >>
@@ -1728,6 +1733,7 @@ $wgVectorLanguageInHeader = [
 ];
 $wgVectorMaxWidthOptions['exclude'] = [];
 $wgVectorResponsive = true;
+// Removed in MediaWiki 1.43
 $wgVectorShareUserScripts = false;
 $wgVectorStickyHeader['logged_out'] = true;
 // Removed in MediaWiki 1.42
