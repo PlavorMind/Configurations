@@ -75,6 +75,8 @@ $wgUseCodexSpecialBlock = true;
 //< Not listed >
 
 // 1.43+
+$wgExperimentalLoginPopup = true;
+// 1.43+
 $wgParserEnableLegacyHeadingDOM = false;
 
 //< Extensions >
