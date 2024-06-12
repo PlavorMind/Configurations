@@ -987,6 +987,8 @@ if ($wmgUseExtensions['AbuseFilter']) {
   }
   else {
     $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['steward'], [
+      // 1.43+
+      'abusefilter-access-protected-vars' => true,
       'abusefilter-bypass-blocked-external-domains' => true,
       'abusefilter-hidden-log' => true,
       'abusefilter-hide-log' => true,
