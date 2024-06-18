@@ -1194,6 +1194,9 @@ if ($wmgUseExtensions['DiscussionTools'] && $wmgUseExtensions['Linter'] && $wmgU
   wfLoadExtension('DiscussionTools');
   // 1.43+
   $wgDiscussionToolsEnableThanks = false;
+
+  // 1.43+
+  $wgConditionalUserOptions['echo-subscriptions-email-dt-subscription'] = [];
 }
 
 //<< Echo >>
