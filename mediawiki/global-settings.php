@@ -377,6 +377,8 @@ $wgEnableScaryTranscluding = true;
 $wgExternalLinkTarget = '_blank';
 $wgMaxTemplateDepth = 5;
 $wgNoFollowDomainExceptions = [];
+// 1.43+
+$wgParserEnableLegacyHeadingDOM = false;
 $wgTranscludeCacheExpiry = $wmgCacheExpiry;
 // Only allow HTTP and HTTPS protocols in links
 $wgUrlProtocols = ['http://', 'https://'];
@@ -1192,6 +1194,7 @@ if ($wmgUseExtensions['ConfirmEdit']) {
 if ($wmgUseExtensions['DiscussionTools'] && $wmgUseExtensions['Linter'] && $wmgUseExtensions['VisualEditor']) {
   // This extension requires running update.php.
   wfLoadExtension('DiscussionTools');
+  $wgDiscussionToolsAutoTopicSubEditor = 'discussiontoolsapi';
   // 1.43+
   $wgDiscussionToolsEnableThanks = false;
 
