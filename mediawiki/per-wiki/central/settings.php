@@ -76,8 +76,6 @@ $wgUseCodexSpecialBlock = true;
 
 // 1.43+
 $wgExperimentalLoginPopup = true;
-// 1.43+
-$wgParserEnableLegacyHeadingDOM = false;
 
 //< Extensions >
 
@@ -108,6 +106,8 @@ $wgMinervaNightMode['loggedin'] = true;
 
 //<< Vector >>
 
+// 1.43+
+$wgVectorAppearance['logged_in'] = true;
 $wgVectorNightMode = [
   'logged_in' => true,
   'logged_out' => true
