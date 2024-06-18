@@ -12,7 +12,6 @@ $wmgUseExtensions = array_merge($wmgUseExtensions, [
   'Math' => true,
   'MultimediaViewer' => true,
   'PageImages' => true,
-  'Parsoid' => true,
   'Poem' => true,
   'Popups' => true,
   'ReplaceText' => true,
