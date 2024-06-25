@@ -1398,7 +1398,9 @@ if ($wmgUseExtensions['Math']) {
   // This extension requires running update.php.
   wfLoadExtension('Math');
   $wgMathEnableWikibaseDataType = false;
-  // Merge strategy of this is array_merge.
+  // 1.43+
+  $wgMathSvgRenderer = 'mathoid';
+  // Merge strategy of this setting is array_merge.
   $wgMathValidModes = ['native'];
 
   $wgDefaultUserOptions['math'] = 'native';
