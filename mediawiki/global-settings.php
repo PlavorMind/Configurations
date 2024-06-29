@@ -1725,7 +1725,7 @@ if ($wmgUseSkins['MinervaNeue']) {
   $wgMinervaTalkAtTop['base'] = true;
 
   // 1.42+
-  $wgDefaultUserOptions['minerva-night-mode'] = 2;
+  $wgDefaultUserOptions['minerva-theme'] = 'os';
 }
 
 //<< Timeless >>
