@@ -282,7 +282,6 @@ if ($wmgGlobalAccountMode !== null) {
   }
 
   unset($wiki, $wikis);
-  // 1.42+
   $wgVirtualDomainsMapping['virtual-botpasswords']['db'] = $wmgCentralDB;
 }
 
@@ -780,11 +779,6 @@ $wgSemiprotectedRestrictionLevels = [
   'editprotected-autoconfirmed'
 ];
 
-// https://gerrit.wikimedia.org/r/c/mediawiki/core/+/976765
-if ($wmgGlobalAccountMode !== null && version_compare(MW_VERSION, '1.42', '<')) {
-  $wgBotPasswordsDatabase = $wmgCentralDB;
-}
-
 //< Security >
 
 $wgAllowUserCssPrefs = false;
@@ -1099,9 +1093,7 @@ if ($wmgUseExtensions['CheckUser']) {
 
   $wgGroupPermissions['checkuser']['checkuser'] = false;
   $wgGroupPermissions['checkuser']['checkuser-log'] = false;
-  // 1.42+
   $wgGroupPermissions['checkuser']['checkuser-temporary-account-log'] = false;
-  // 1.42+
   $wgGroupPermissions['checkuser']['checkuser-temporary-account-no-preference'] = false;
 
   if ($wmgGlobalAccountMode === 'centralauth') {
@@ -1119,13 +1111,7 @@ if ($wmgUseExtensions['CheckUser']) {
     $wgGroupPermissions['steward']['checkuser'] = true;
     $wgGroupPermissions['steward']['checkuser-log'] = true;
     $wgGroupPermissions['steward']['checkuser-temporary-account-log'] = true;
-
-    if (version_compare(MW_VERSION, '1.42', '<')) {
-      $wgGroupPermissions['steward']['checkuser-temporary-account'] = true;
-    }
-    else {
-      $wgGroupPermissions['steward']['checkuser-temporary-account-no-preference'] = true;
-    }
+    $wgGroupPermissions['steward']['checkuser-temporary-account-no-preference'] = true;
   }
 }
 
@@ -1241,13 +1227,9 @@ if ($wmgUseExtensions['Echo']) {
     ]
   ];
 
-  // 1.42+
   $wgConditionalUserOptions['echo-subscriptions-email-article-linked'] = [];
-  // 1.42+
   $wgConditionalUserOptions['echo-subscriptions-email-mention'] = [];
-  // 1.42+
   $wgConditionalUserOptions['echo-subscriptions-web-article-linked'] = [];
-  // 1.42+
   $wgConditionalUserOptions['echo-subscriptions-web-reverted'] = [];
   $wgGroupPermissions['push-subscription-manager']['manage-all-push-subscriptions'] = false;
 
@@ -1285,18 +1267,12 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 if ($wmgGlobalAccountMode !== null) {
   // This extension requires running update.php.
   wfLoadExtension('GlobalBlocking');
-  /*
-  1.42+
-  This is same as the default in MediaWiki 1.43 or newer.
-  */
+  // This is same as the default in MediaWiki 1.43 or newer.
   $wgGlobalBlockingAllowGlobalAccountBlocks = true;
   $wgGlobalBlockingCIDRLimit = $wmgCIDRLimit;
-  // Removed in MediaWiki 1.42
-  $wgGlobalBlockingDatabase = $wmgCentralDB;
   $wgGlobalBlockRemoteReasonUrl = "{$wmgCentralBaseURL}{$wgScriptPath}/api.php";
   $wgGroupPermissions['sysop']['globalblock-whitelist'] = false;
   $wgGroupPermissions['steward']['globalblock'] = false;
-  // 1.42+
   $wgVirtualDomainsMapping['virtual-globalblocking']['db'] = $wmgCentralDB;
 }
 
@@ -1437,9 +1413,6 @@ if ($wmgUseExtensions['OATHAuth']) {
 
   if ($wmgGlobalAccountMode !== null) {
     $wgOATHAuthAccountPrefix = 'PlavorMind wikis';
-    // This setting is superseded by $wgVirtualDomainsMapping and deprecated in MediaWiki 1.42.
-    $wgOATHAuthDatabase = $wmgCentralDB;
-    // 1.42+
     $wgVirtualDomainsMapping['virtual-oathauth']['db'] = $wmgCentralDB;
   }
 
@@ -1469,8 +1442,6 @@ if ($wmgUseExtensions['ParserFunctions']) {
 
 if ($wmgUseExtensions['Parsoid']) {
   wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
-  // Removed in MediaWiki 1.42
-  $wgParsoidEnableQueryString = true;
 }
 
 //<< PlavorMindTools >>
@@ -1724,7 +1695,6 @@ if ($wmgUseSkins['MinervaNeue']) {
   $wgMinervaShowCategories['loggedin'] = true;
   $wgMinervaTalkAtTop['base'] = true;
 
-  // 1.42+
   $wgDefaultUserOptions['minerva-theme'] = 'os';
 }
 
@@ -1746,11 +1716,6 @@ $wgVectorResponsive = true;
 // Removed in MediaWiki 1.43
 $wgVectorShareUserScripts = false;
 $wgVectorStickyHeader['logged_out'] = true;
-// Removed in MediaWiki 1.42
-$wgVectorZebraDesign = [
-  'logged_in' => true,
-  'logged_out' => true
-];
 
 $wgDefaultUserOptions['vector-limited-width'] = 0;
 
