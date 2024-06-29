@@ -308,7 +308,7 @@ $wgCacheDirectory = "$wmgDataDirectory/private/per-wiki/$wmgWiki/caches";
 $wgFooterLinkCacheExpiry = $wmgCacheExpiry;
 $wgLanguageConverterCacheType = $wmgCacheType;
 $wgMainCacheType = $wmgCacheType;
-$wgStatsCacheType = $wmgCacheType;
+$wgMicroStashType = $wmgCacheType;
 $wgUseFileCache = true;
 
 //<< Message Cache >>
