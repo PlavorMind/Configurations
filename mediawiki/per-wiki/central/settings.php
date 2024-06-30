@@ -79,7 +79,6 @@ $wgEnableProtectionIndicators = true;
 
 //<< AbuseFilter >>
 
-$wgAbuseFilterBlockedExternalDomainsNotifications = true;
 $wgAbuseFilterEnableBlockedExternalDomain = true;
 
 //<< CiteThisPage >>
