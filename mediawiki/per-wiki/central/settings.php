@@ -50,7 +50,6 @@ $wgLocalInterwikis = ['central'];
 
 //<< Access >>
 
-// 1.42+
 $wgEnableMultiBlocks = true;
 $wgNamespaceProtection = [
   NS_PROJECT => ['editprotected-admin'],
@@ -69,7 +68,6 @@ $wgFilterLogTypes['create'] = true;
 //< Miscellaneous settings >
 
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
-// 1.42+
 $wgUseCodexSpecialBlock = true;
 
 //< Not listed >
@@ -81,7 +79,6 @@ $wgEnableProtectionIndicators = true;
 
 //<< AbuseFilter >>
 
-// 1.42+
 $wgAbuseFilterBlockedExternalDomainsNotifications = true;
 $wgAbuseFilterEnableBlockedExternalDomain = true;
 
@@ -99,7 +96,6 @@ $wgVisualEditorEnableVisualSectionEditing = true;
 
 //<< MinervaNeue >>
 
-// 1.42+
 $wgMinervaNightMode['base'] = true;
 // 1.43+
 $wgMinervaNightMode['loggedin'] = true;
