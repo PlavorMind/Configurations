@@ -1050,7 +1050,7 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgCentralAuthAutoMigrate = true;
   $wgCentralAuthAutoMigrateNonGlobalAccounts = true;
   $wgCentralAuthCookies = true;
-  // This setting is still used for the session-related stuff in MediaWiki 1.43: https://phabricator.wikimedia.org/T348486#9813426
+  // This setting is superseded by $wgVirtualDomainsMapping and deprecated in MediaWiki 1.43.
   $wgCentralAuthDatabase = 'wiki_centralauth';
   $wgCentralAuthGlobalBlockInterwikiPrefix = 'central';
   $wgCentralAuthGlobalPasswordPolicies['steward'] = $wgPasswordPolicy['policies']['steward'];
