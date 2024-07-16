@@ -1718,6 +1718,8 @@ $wgVectorShareUserScripts = false;
 $wgVectorStickyHeader['logged_out'] = true;
 
 $wgDefaultUserOptions['vector-limited-width'] = 0;
+// 1.43+
+$wgDefaultUserOptions['vector-theme'] = 'os';
 
 //< Load other settings >
 
