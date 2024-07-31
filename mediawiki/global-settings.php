@@ -136,7 +136,7 @@ if (!in_array($wmgWiki, $wmgWikis, true)) {
 //<< Global accounts >>
 
 $wmgGlobalAccountExemptWikis = [];
-// 'centralauth', 'shared-db' or null
+// 'centralauth', 'shared-db', or null
 $wmgGlobalAccountMode = 'centralauth';
 
 if (in_array($wmgWiki, $wmgGlobalAccountExemptWikis, true)) {
@@ -1113,6 +1113,10 @@ if ($wmgUseExtensions['CheckUser']) {
     $wgGroupPermissions['steward']['checkuser-temporary-account-log'] = true;
     $wgGroupPermissions['steward']['checkuser-temporary-account-no-preference'] = true;
   }
+
+  if ($wmgGlobalAccountMode !== null) {
+    $wgVirtualDomainsMapping['virtual-checkuser-global']['db'] = 'wikis_global';
+  }
 }
 
 //<< Cite >>
@@ -1267,7 +1271,7 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 if ($wmgGlobalAccountMode !== null) {
   // This extension requires running update.php.
   wfLoadExtension('GlobalBlocking');
-  // This is same as the default in MediaWiki 1.43 or newer.
+  // Removed in MediaWiki 1.43
   $wgGlobalBlockingAllowGlobalAccountBlocks = true;
   $wgGlobalBlockingCIDRLimit = $wmgCIDRLimit;
   $wgGlobalBlockRemoteReasonUrl = "{$wmgCentralBaseURL}{$wgScriptPath}/api.php";
