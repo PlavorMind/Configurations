@@ -514,7 +514,6 @@ $wgGroupPermissions = [
     'patrolmarks' => true,
     'read' => true,
     'unwatchedpages' => true,
-    'writeapi' => true
   ],
   'user' => [
     'applychangetags' => true,
@@ -629,6 +628,10 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
     'upload_by_url' => true
   ];
   $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['staff'], $wgGroupPermissions['steward']);
+}
+
+if (version_compare(MW_VERSION, '1.43', '<')) {
+  $wgGroupPermissions['*']['writeapi'] = true;
 }
 
 $wgRateLimits = array_merge($wgRateLimits, [
@@ -1115,6 +1118,7 @@ if ($wmgUseExtensions['CheckUser']) {
   }
 
   if ($wmgGlobalAccountMode !== null) {
+    // 1.43+
     $wgVirtualDomainsMapping['virtual-checkuser-global']['db'] = 'wikis_global';
   }
 }
