@@ -67,13 +67,15 @@ $wgFilterLogTypes['create'] = true;
 
 //< Miscellaneous settings >
 
+// 1.43+
+$wgEnableProtectionIndicators = true;
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
 $wgUseCodexSpecialBlock = true;
 
 //< Not listed >
 
 // 1.43+
-$wgEnableProtectionIndicators = true;
+$wgSortedCategories = true;
 
 //< Extensions >
 
