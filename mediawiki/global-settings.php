@@ -1099,6 +1099,15 @@ if ($wmgUseExtensions['CheckUser']) {
   $wgGroupPermissions['checkuser']['checkuser-temporary-account-log'] = false;
   $wgGroupPermissions['checkuser']['checkuser-temporary-account-no-preference'] = false;
 
+  if ($wmgGlobalAccountMode === null) {
+    // 1.43+
+    $wgCheckUserWriteToCentralIndex = false;
+  }
+  else {
+    // 1.43+
+    $wgVirtualDomainsMapping['virtual-checkuser-global']['db'] = 'wikis_global';
+  }
+
   if ($wmgGlobalAccountMode === 'centralauth') {
     $wgCheckUserCAMultiLock = [
       'centralDB' => $wmgCentralDB,
@@ -1115,11 +1124,6 @@ if ($wmgUseExtensions['CheckUser']) {
     $wgGroupPermissions['steward']['checkuser-log'] = true;
     $wgGroupPermissions['steward']['checkuser-temporary-account-log'] = true;
     $wgGroupPermissions['steward']['checkuser-temporary-account-no-preference'] = true;
-  }
-
-  if ($wmgGlobalAccountMode !== null) {
-    // 1.43+
-    $wgVirtualDomainsMapping['virtual-checkuser-global']['db'] = 'wikis_global';
   }
 }
 
@@ -1712,6 +1716,8 @@ if ($wmgUseSkins['Timeless']) {
 //<< Vector >>
 
 wfLoadSkin('Vector');
+// 1.43+
+$wgVectorFontSizeConfigurableOptions['exclude'] = [];
 $wgVectorLanguageInHeader = [
   'logged_in' => false,
   'logged_out' => false
