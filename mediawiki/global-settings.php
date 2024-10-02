@@ -1502,12 +1502,9 @@ if ($wmgUseExtensions['Poem']) {
 if ($wmgUseExtensions['Popups'] && $wmgUseExtensions['PageImages'] && $wmgUseExtensions['TextExtracts']) {
   wfLoadExtension('Popups');
   $wgPopupsHideOptInOnPreferencesPage = true;
-  $wgPopupsReferencePreviewsBetaFeature = false;
 
   // 1.43+
   $wgConditionalUserOptions['popups'] = [];
-  // 1.43+
-  $wgConditionalUserOptions['popups-reference-previews'] = [];
 }
 
 //<< QuickInstantCommons >>
