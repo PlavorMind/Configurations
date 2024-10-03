@@ -249,10 +249,6 @@ $wgNativeImageLazyLoading = true;
 // 1 MiB
 $wgUploadSizeWarning = 1024 * 1024 * 1;
 
-//<< MIME types >>
-
-$wgVerifyMimeTypeIE = false;
-
 //<< Images >>
 
 //<<< SVG >>>
@@ -1094,10 +1090,18 @@ if ($wmgUseExtensions['CheckUser']) {
   $wgCheckUserLogLogins = true;
   $wgCheckUserMaxBlocks = 10;
 
-  $wgGroupPermissions['checkuser']['checkuser'] = false;
-  $wgGroupPermissions['checkuser']['checkuser-log'] = false;
-  $wgGroupPermissions['checkuser']['checkuser-temporary-account-log'] = false;
-  $wgGroupPermissions['checkuser']['checkuser-temporary-account-no-preference'] = false;
+  $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
+    'checkuser' => [
+      'checkuser' => false,
+      'checkuser-log' => false,
+      'checkuser-temporary-account-log' => false,
+      'checkuser-temporary-account-no-preference' => false
+    ],
+    // 1.43+
+    'checkuser-temporary-account-viewer' => [
+      'checkuser-temporary-account' => false
+    ]
+  ]);
 
   if ($wmgGlobalAccountMode === null) {
     // 1.43+
@@ -1388,9 +1392,13 @@ if ($wmgUseExtensions['Math']) {
   $wgMathEnableWikibaseDataType = false;
   // 1.43+
   $wgMathSvgRenderer = 'mathoid';
-  // Merge strategy of this setting is array_merge.
+  /*
+  Merge strategy of this setting is array_merge.
+  There is no need to override this setting in MediaWiki 1.43 or newer: https://gerrit.wikimedia.org/r/c/mediawiki/extensions/Math/+/1069255
+  */
   $wgMathValidModes = ['native'];
 
+  // This is same as the default in MediaWiki 1.43 or newer.
   $wgDefaultUserOptions['math'] = 'native';
 }
 
@@ -1465,6 +1473,8 @@ if ($wmgUseExtensions['PlavorMindTools']) {
     'bot',
     'bureaucrat',
     'checkuser',
+    // 1.43+
+    'checkuser-temporary-account-viewer',
     'push-subscription-manager',
     'steward',
     'suppress',
