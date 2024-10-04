@@ -909,6 +909,16 @@ $wgHTTPTimeout = 30;
 
 $wgSkinsPreferred = ['vector-2022'];
 
+//< Not listed >
+
+// 1.43+
+$wgAllowRawHtmlCopyrightMessages = false;
+// 1.43+
+$wgRevisionSlotsCacheExpiry = [
+  'local' => $wmgCacheExpiry,
+  'WAN' => $wmgCacheExpiry
+];
+
 //< Extension and skin usages >
 
 if (is_file("$wmgDataDirectory/per-wiki/$wmgWiki/extra-usages.php")) {
