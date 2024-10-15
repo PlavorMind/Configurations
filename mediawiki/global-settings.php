@@ -1295,7 +1295,13 @@ if ($wmgGlobalAccountMode !== null) {
   wfLoadExtension('GlobalBlocking');
   // Removed in MediaWiki 1.43
   $wgGlobalBlockingAllowGlobalAccountBlocks = true;
+  // 1.43+
+  $wgGlobalBlockingAutoblockExpiry = $wgAutoblockExpiry;
+  // 1.43+
+  $wgGlobalBlockingCentralWikiContentLanguage = 'en';
   $wgGlobalBlockingCIDRLimit = $wmgCIDRLimit;
+  // 1.43+
+  $wgGlobalBlockingEnableAutoblocks = true;
   $wgGlobalBlockRemoteReasonUrl = "{$wmgCentralBaseURL}{$wgScriptPath}/api.php";
   $wgGroupPermissions['sysop']['globalblock-whitelist'] = false;
   $wgGroupPermissions['steward']['globalblock'] = false;
