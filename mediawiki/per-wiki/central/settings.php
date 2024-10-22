@@ -106,6 +106,7 @@ $wgMinervaNightMode['loggedin'] = true;
 //<< Vector >>
 
 $wgVectorNightMode = [
+  // This is same as the default in MediaWiki 1.43 or newer.
   'logged_in' => true,
   'logged_out' => true
 ];
