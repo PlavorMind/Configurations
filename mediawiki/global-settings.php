@@ -967,11 +967,15 @@ if ($wmgUseExtensions['AbuseFilter']) {
       'abusefilter-hide-log' => false
     ],
     'sysop' => [
+      // 1.43+
+      'abusefilter-access-protected-vars' => false,
       'abusefilter-log-detail' => false,
       'abusefilter-log-private' => false,
       'abusefilter-modify' => false,
       'abusefilter-modify-blocked-external-domains' => false,
       'abusefilter-modify-restricted' => false,
+      // 1.43+
+      'abusefilter-protected-vars-log' => false,
       'abusefilter-revert' => false,
       'abusefilter-view-private' => false
     ],
@@ -1001,6 +1005,8 @@ if ($wmgUseExtensions['AbuseFilter']) {
       'abusefilter-modify-blocked-external-domains' => true,
       'abusefilter-privatedetails' => true,
       'abusefilter-privatedetails-log' => true,
+      // 1.43+
+      'abusefilter-protected-vars-log' => true,
       'abusefilter-revert' => true
     ]);
   }
@@ -1132,6 +1138,8 @@ if ($wmgUseExtensions['CheckUser']) {
       'centralDB' => $wmgCentralDB,
       'groups' => ['steward']
     ];
+    // 1.43+
+    $wgCheckUserGlobalContributionsCentralWikiId = $wmgCentralDB;
   }
   else {
     $wgGroupPermissions['steward']['checkuser'] = true;
