@@ -1313,7 +1313,7 @@ if ($wmgGlobalAccountMode !== null) {
   $wgGlobalBlockRemoteReasonUrl = "{$wmgCentralBaseURL}{$wgScriptPath}/api.php";
   $wgGroupPermissions['sysop']['globalblock-whitelist'] = false;
   $wgGroupPermissions['steward']['globalblock'] = false;
-  $wgVirtualDomainsMapping['virtual-globalblocking']['db'] = $wmgCentralDB;
+  $wgVirtualDomainsMapping['virtual-globalblocking']['db'] = 'wikis_global';
 }
 
 //<< GlobalCssJs >>
