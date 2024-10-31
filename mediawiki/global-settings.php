@@ -1457,7 +1457,7 @@ if ($wmgUseExtensions['OATHAuth']) {
 
   if ($wmgGlobalAccountMode !== null) {
     $wgOATHAuthAccountPrefix = 'PlavorMind wikis';
-    $wgVirtualDomainsMapping['virtual-oathauth']['db'] = $wmgCentralDB;
+    $wgVirtualDomainsMapping['virtual-oathauth']['db'] = 'wikis_global';
   }
 
   if ($wmgGlobalAccountMode !== 'centralauth') {
