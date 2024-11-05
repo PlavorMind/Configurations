@@ -1308,7 +1308,10 @@ if ($wmgGlobalAccountMode !== null) {
   // 1.43+
   $wgGlobalBlockingCentralWikiContentLanguage = 'en';
   $wgGlobalBlockingCIDRLimit = $wmgCIDRLimit;
-  // 1.43+
+  /*
+  1.43+
+  This is same as the default in MediaWiki 1.44 or newer.
+  */
   $wgGlobalBlockingEnableAutoblocks = true;
   $wgGlobalBlockRemoteReasonUrl = "{$wmgCentralBaseURL}{$wgScriptPath}/api.php";
   $wgGroupPermissions['sysop']['globalblock-whitelist'] = false;
