@@ -296,6 +296,11 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 
 $wgPageLanguageUseDB = true;
 $wgRevisionCacheExpiry = $wmgCacheExpiry;
+// 1.43+
+$wgRevisionSlotsCacheExpiry = [
+  'local' => $wmgCacheExpiry,
+  'WAN' => $wmgCacheExpiry
+];
 
 //< Cache >
 
@@ -328,6 +333,8 @@ $wgSessionCacheType = $wmgCacheType;
 
 //< Language, regional and character encoding settings >
 
+// 1.43+
+$wgAllowRawHtmlCopyrightMessages = false;
 $wgAllUnicodeFixes = true;
 
 //<< Language-specific >>
@@ -911,13 +918,8 @@ $wgSkinsPreferred = ['vector-2022'];
 
 //< Not listed >
 
-// 1.43+
-$wgAllowRawHtmlCopyrightMessages = false;
-// 1.43+
-$wgRevisionSlotsCacheExpiry = [
-  'local' => $wmgCacheExpiry,
-  'WAN' => $wmgCacheExpiry
-];
+// 1.44+
+// $wgInstallerInitialPages
 
 //< Extension and skin usages >
 
@@ -1103,6 +1105,7 @@ if ($wmgUseExtensions['CheckUser']) {
   // This extension requires running update.php.
   wfLoadExtension('CheckUser');
   $wgCheckUserCIDRLimit = $wmgCIDRLimit;
+  // This is same as the default in MediaWiki 1.44 or newer.
   $wgCheckUserLogLogins = true;
   $wgCheckUserMaxBlocks = 10;
 
@@ -1439,6 +1442,8 @@ if ($wmgUseExtensions['MultimediaViewer']) {
 
 if ($wmgUseExtensions['Nuke']) {
   wfLoadExtension('Nuke');
+  // 1.44+
+  // $wgNukeMaxAge
 
   $wgGroupPermissions['sysop']['nuke'] = false;
   $wgGroupPermissions['staff']['nuke'] = true;
