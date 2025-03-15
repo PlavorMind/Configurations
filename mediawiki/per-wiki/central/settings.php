@@ -117,8 +117,12 @@ $wgVisualEditorEnableVisualSectionEditing = true;
 
 //<< MinervaNeue >>
 
+// This is same as the default in MediaWiki 1.44 or newer.
 $wgMinervaNightMode['base'] = true;
-// 1.43+
+/*
+1.43+
+This is same as the default in MediaWiki 1.44 or newer.
+*/
 $wgMinervaNightMode['loggedin'] = true;
 
 //<< Vector >>
