@@ -106,6 +106,8 @@ $wgNukeUIType = 'codex';
 
 // 1.44+
 $wgTemplateDataEnableDiscovery = true;
+// Experimental
+$wgTemplateDataMaxFavorites = 10;
 
 //<< VisualEditor >>
 
