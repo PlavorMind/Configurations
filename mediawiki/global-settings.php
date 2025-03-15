@@ -279,6 +279,10 @@ if ($wmgGlobalAccountMode !== null) {
 
   unset($wiki, $wikis);
   $wgVirtualDomainsMapping['virtual-botpasswords']['db'] = $wmgCentralDB;
+  // 1.44+
+  $wgVirtualDomainsMapping['virtual-interwiki']['db'] = $wmgCentralDB;
+  // 1.44+
+  $wgVirtualDomainsMapping['virtual-interwiki-interlanguage']['db'] = $wmgCentralDB;
 }
 
 //<< SQLite-specific >>
@@ -580,6 +584,8 @@ $wgGroupPermissions = [
     'edituserjson' => true,
     'import' => true,
     'importupload' => true,
+    // This permission has been moved from Interwiki extension to the core in MediaWiki 1.44.
+    'interwiki' => true,
     'mergehistory' => true
   ]
 ];
@@ -1316,6 +1322,8 @@ if ($wmgGlobalAccountMode !== null) {
   This is same as the default in MediaWiki 1.44 or newer.
   */
   $wgGlobalBlockingEnableAutoblocks = true;
+  // 1.44+
+  $wgGlobalBlockingMassGlobalBlockMaxTargets = 10;
   $wgGlobalBlockRemoteReasonUrl = "{$wmgCentralBaseURL}{$wgScriptPath}/api.php";
   $wgGroupPermissions['sysop']['globalblock-whitelist'] = false;
   $wgGroupPermissions['steward']['globalblock'] = false;
@@ -1367,13 +1375,16 @@ if ($wmgUseExtensions['InputBox']) {
 
 //<< Interwiki >>
 
-if ($wmgUseExtensions['Interwiki']) {
-  wfLoadExtension('Interwiki');
+if (version_compare(MW_VERSION, '1.44', '<')) {
+  if ($wmgUseExtensions['Interwiki']) {
+    wfLoadExtension('Interwiki');
 
-  $wgGroupPermissions['admin']['interwiki'] = true;
-
-  if ($wmgGlobalAccountMode !== null) {
-    $wgInterwikiCentralDB = $wmgCentralDB;
+    if ($wmgGlobalAccountMode !== null) {
+      $wgInterwikiCentralDB = $wmgCentralDB;
+    }
+  }
+  else {
+    $wgGroupPermissions['admin']['interwiki'] = false;
   }
 }
 
