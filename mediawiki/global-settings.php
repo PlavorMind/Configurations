@@ -1072,6 +1072,8 @@ if ($wmgUseExtensions['CategoryTree']) {
 if ($wmgGlobalAccountMode === 'centralauth') {
   // This extension requires running update.php.
   wfLoadExtension('CentralAuth');
+  // 1.44+
+  $wgCentralAuthAutomaticVanishWiki = $wmgCentralDB;
   $wgCentralAuthAutoMigrate = true;
   $wgCentralAuthAutoMigrateNonGlobalAccounts = true;
   $wgCentralAuthCookies = true;
@@ -1528,7 +1530,9 @@ if ($wmgUseExtensions['PlavorMindTools']) {
     'push-subscription-manager',
     'steward',
     'suppress',
-    'sysop'
+    'sysop',
+    // 1.44+
+    'temporary-account-viewer'
   ];
   $wgCUGEnable = true;
   $wgCUGHierarchies = [
