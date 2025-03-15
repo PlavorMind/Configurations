@@ -1164,7 +1164,10 @@ if ($wmgUseExtensions['CheckUser']) {
 
 if ($wmgUseExtensions['Cite']) {
   wfLoadExtension('Cite');
+  // This setting has been renamed to $wgCiteSubReferencing in MediaWiki 1.44.
   $wgCiteBookReferencing = true;
+  // 1.44+
+  $wgCiteSubReferencing = true;
 }
 
 //<< CiteThisPage >>
