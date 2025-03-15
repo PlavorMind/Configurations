@@ -1779,6 +1779,7 @@ $wgVectorMaxWidthOptions['exclude'] = [];
 $wgVectorResponsive = true;
 // Removed in MediaWiki 1.43
 $wgVectorShareUserScripts = false;
+// Removed in MediaWiki 1.44
 $wgVectorStickyHeader['logged_out'] = true;
 
 $wgDefaultUserOptions['vector-limited-width'] = 0;
