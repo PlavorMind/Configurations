@@ -259,6 +259,8 @@ $wgSVGNativeRendering = true;
 
 $wgGenerateThumbnailOnParse = false;
 $wgThumbnailScriptPath = "$wgScriptPath/thumb.php";
+// 1.44+
+// $wgThumbnailSteps
 
 //< Email settings >
 
