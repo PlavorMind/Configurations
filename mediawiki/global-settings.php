@@ -1111,6 +1111,8 @@ if ($wmgUseExtensions['CheckUser']) {
   // This extension requires running update.php.
   wfLoadExtension('CheckUser');
   $wgCheckUserCIDRLimit = $wmgCIDRLimit;
+  // 1.44+
+  $wgCheckUserEnableTempAccountsOnboardingDialog = false;
   // This is same as the default in MediaWiki 1.44 or newer.
   $wgCheckUserLogLogins = true;
   $wgCheckUserMaxBlocks = 10;
