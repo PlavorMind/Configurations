@@ -102,6 +102,11 @@ $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
 // 1.44+
 $wgNukeUIType = 'codex';
 
+//<< TemplateData >>
+
+// 1.44+
+$wgTemplateDataEnableDiscovery = true;
+
 //<< VisualEditor >>
 
 // Experimental
