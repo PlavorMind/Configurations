@@ -88,6 +88,11 @@ $wgUseCodexSpecialBlock = true;
 
 $wgAbuseFilterEnableBlockedExternalDomain = true;
 
+//<< Cite >>
+
+// 1.44+
+$wgCiteUseLegacyBacklinkLabels = false;
+
 //<< CiteThisPage >>
 
 $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
