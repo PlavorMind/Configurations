@@ -46,6 +46,11 @@ $wgNamespaceAliases = [
 
 $wgLocalInterwikis = ['central'];
 
+//< Parser >
+
+// 1.43+
+$wgParserEnableUserLanguage = true;
+
 //< User rights, access control and monitoring >
 
 //<< Access >>
@@ -61,6 +66,11 @@ $wgNamespaceProtection = [
 
 $wgUseCopyrightUpload = true;
 
+//< Category >
+
+// 1.43+
+$wgSortedCategories = true;
+
 //< Logging >
 
 $wgFilterLogTypes['create'] = true;
@@ -72,13 +82,6 @@ $wgEnableProtectionIndicators = true;
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
 $wgUseCodexSpecialBlock = true;
 
-//< Not listed >
-
-// 1.43+
-$wgParserEnableUserLanguage = true;
-// 1.43+
-$wgSortedCategories = true;
-
 //< Extensions >
 
 //<< AbuseFilter >>
@@ -88,6 +91,11 @@ $wgAbuseFilterEnableBlockedExternalDomain = true;
 //<< CiteThisPage >>
 
 $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
+
+//<< Nuke >>
+
+// 1.44+
+$wgNukeUIType = 'codex';
 
 //<< VisualEditor >>
 
