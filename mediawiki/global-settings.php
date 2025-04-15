@@ -1128,8 +1128,15 @@ if ($wmgUseExtensions['CheckUser']) {
       'checkuser-temporary-account-log' => false,
       'checkuser-temporary-account-no-preference' => false
     ],
-    // 1.43+
+    /*
+    1.43+
+    This user group has been removed in MediaWiki 1.44.
+    */
     'checkuser-temporary-account-viewer' => [
+      'checkuser-temporary-account' => false
+    ],
+    // 1.44+
+    'temporary-account-viewer' => [
       'checkuser-temporary-account' => false
     ]
   ]);
