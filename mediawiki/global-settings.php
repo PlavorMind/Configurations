@@ -302,7 +302,6 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 
 $wgPageLanguageUseDB = true;
 $wgRevisionCacheExpiry = $wmgCacheExpiry;
-// 1.43+
 $wgRevisionSlotsCacheExpiry = [
   'local' => $wmgCacheExpiry,
   'WAN' => $wmgCacheExpiry
@@ -339,7 +338,6 @@ $wgSessionCacheType = $wmgCacheType;
 
 //< Language, regional and character encoding settings >
 
-// 1.43+
 $wgAllowRawHtmlCopyrightMessages = false;
 $wgAllUnicodeFixes = true;
 
@@ -385,7 +383,6 @@ $wgEnableScaryTranscluding = true;
 $wgExternalLinkTarget = '_blank';
 $wgMaxTemplateDepth = 5;
 $wgNoFollowDomainExceptions = [];
-// 1.43+
 // This is same as the default in MediaWiki 1.44 or newer.
 $wgParserEnableLegacyHeadingDOM = false;
 $wgTranscludeCacheExpiry = $wmgCacheExpiry;
@@ -640,10 +637,6 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
     'upload_by_url' => true
   ];
   $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['staff'], $wgGroupPermissions['steward']);
-}
-
-if (version_compare(MW_VERSION, '1.43', '<')) {
-  $wgGroupPermissions['*']['writeapi'] = true;
 }
 
 $wgRateLimits = array_merge($wgRateLimits, [
@@ -978,14 +971,12 @@ if ($wmgUseExtensions['AbuseFilter']) {
       'abusefilter-hide-log' => false
     ],
     'sysop' => [
-      // 1.43+
       'abusefilter-access-protected-vars' => false,
       'abusefilter-log-detail' => false,
       'abusefilter-log-private' => false,
       'abusefilter-modify' => false,
       'abusefilter-modify-blocked-external-domains' => false,
       'abusefilter-modify-restricted' => false,
-      // 1.43+
       'abusefilter-protected-vars-log' => false,
       'abusefilter-revert' => false,
       'abusefilter-view-private' => false
@@ -1007,7 +998,6 @@ if ($wmgUseExtensions['AbuseFilter']) {
   }
   else {
     $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['steward'], [
-      // 1.43+
       'abusefilter-access-protected-vars' => true,
       'abusefilter-bypass-blocked-external-domains' => true,
       'abusefilter-hidden-log' => true,
@@ -1016,7 +1006,6 @@ if ($wmgUseExtensions['AbuseFilter']) {
       'abusefilter-modify-blocked-external-domains' => true,
       'abusefilter-privatedetails' => true,
       'abusefilter-privatedetails-log' => true,
-      // 1.43+
       'abusefilter-protected-vars-log' => true,
       'abusefilter-revert' => true
     ]);
@@ -1078,8 +1067,6 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgCentralAuthAutoMigrate = true;
   $wgCentralAuthAutoMigrateNonGlobalAccounts = true;
   $wgCentralAuthCookies = true;
-  // This setting is superseded by $wgVirtualDomainsMapping and deprecated in MediaWiki 1.43.
-  $wgCentralAuthDatabase = 'wiki_centralauth';
   $wgCentralAuthGlobalBlockInterwikiPrefix = 'central';
   $wgCentralAuthGlobalPasswordPolicies['steward'] = $wgPasswordPolicy['policies']['steward'];
   $wgCentralAuthLoginWiki = $wmgCentralDB;
@@ -1102,7 +1089,6 @@ if ($wmgGlobalAccountMode === 'centralauth') {
       'centralauth-unmerge' => false
     ]
   ]);
-  // 1.43+
   $wgVirtualDomainsMapping['virtual-centralauth']['db'] = 'wiki_centralauth';
 
   if (str_starts_with($wmgDefaultDomain, '%wiki%.') && !isset($wmgCustomDomains[$wmgWiki])) {
@@ -1129,10 +1115,7 @@ if ($wmgUseExtensions['CheckUser']) {
       'checkuser-temporary-account-log' => false,
       'checkuser-temporary-account-no-preference' => false
     ],
-    /*
-    1.43+
-    This user group has been removed in MediaWiki 1.44.
-    */
+    // This user group has been removed in MediaWiki 1.44.
     'checkuser-temporary-account-viewer' => [
       'checkuser-temporary-account' => false
     ],
@@ -1143,11 +1126,9 @@ if ($wmgUseExtensions['CheckUser']) {
   ]);
 
   if ($wmgGlobalAccountMode === null) {
-    // 1.43+
     $wgCheckUserWriteToCentralIndex = false;
   }
   else {
-    // 1.43+
     $wgVirtualDomainsMapping['virtual-checkuser-global']['db'] = 'wikis_global';
   }
 
@@ -1161,7 +1142,6 @@ if ($wmgUseExtensions['CheckUser']) {
       'centralDB' => $wmgCentralDB,
       'groups' => ['steward']
     ];
-    // 1.43+
     $wgCheckUserGlobalContributionsCentralWikiId = $wmgCentralDB;
   }
   else {
@@ -1241,10 +1221,8 @@ if ($wmgUseExtensions['DiscussionTools'] && $wmgUseExtensions['Linter'] && $wmgU
   // This extension requires running update.php.
   wfLoadExtension('DiscussionTools');
   $wgDiscussionToolsAutoTopicSubEditor = 'discussiontoolsapi';
-  // 1.43+
   $wgDiscussionToolsEnableThanks = false;
 
-  // 1.43+
   $wgConditionalUserOptions['echo-subscriptions-email-dt-subscription'] = [];
 }
 
@@ -1309,11 +1287,8 @@ if ($wmgUseExtensions['Echo']) {
   }
 
   if ($wmgGlobalAccountMode !== 'centralauth') {
+    $wgGroupPermissions['steward']['echo-create'] = true;
     $wgGroupPermissions['steward']['manage-all-push-subscriptions'] = true;
-
-    if (version_compare(MW_VERSION, '1.43', '>=')) {
-      $wgGroupPermissions['steward']['echo-create'] = true;
-    }
   }
 }
 
@@ -1327,19 +1302,11 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 if ($wmgGlobalAccountMode !== null) {
   // This extension requires running update.php.
   wfLoadExtension('GlobalBlocking');
-  // Removed in MediaWiki 1.43
-  $wgGlobalBlockingAllowGlobalAccountBlocks = true;
-  // 1.43+
   $wgGlobalBlockingAutoblockExpiry = $wgAutoblockExpiry;
-  // 1.43+
   // $wgGlobalBlockingCentralWiki
-  // 1.43+
   $wgGlobalBlockingCentralWikiContentLanguage = 'en';
   $wgGlobalBlockingCIDRLimit = $wmgCIDRLimit;
-  /*
-  1.43+
-  This is same as the default in MediaWiki 1.44 or newer.
-  */
+  // This is same as the default in MediaWiki 1.44 or newer.
   $wgGlobalBlockingEnableAutoblocks = true;
   // 1.44+
   $wgGlobalBlockingMassGlobalBlockMaxTargets = 10;
@@ -1450,16 +1417,7 @@ if ($wmgUseExtensions['Math']) {
   // This extension requires running update.php.
   wfLoadExtension('Math');
   $wgMathEnableWikibaseDataType = false;
-  // 1.43+
   $wgMathSvgRenderer = 'mathoid';
-  /*
-  Merge strategy of this setting is array_merge.
-  There is no need to override this setting in MediaWiki 1.43 or newer: https://gerrit.wikimedia.org/r/c/mediawiki/extensions/Math/+/1069255
-  */
-  $wgMathValidModes = ['native'];
-
-  // This is same as the default in MediaWiki 1.43 or newer.
-  $wgDefaultUserOptions['math'] = 'native';
 }
 
 //<< MultimediaViewer >>
@@ -1535,7 +1493,6 @@ if ($wmgUseExtensions['PlavorMindTools']) {
     'bot',
     'bureaucrat',
     'checkuser',
-    // 1.43+
     'checkuser-temporary-account-viewer',
     'push-subscription-manager',
     'steward',
@@ -1581,7 +1538,6 @@ if ($wmgUseExtensions['Popups'] && $wmgUseExtensions['PageImages'] && $wmgUseExt
   wfLoadExtension('Popups');
   $wgPopupsHideOptInOnPreferencesPage = true;
 
-  // 1.43+
   $wgConditionalUserOptions['popups'] = [];
 }
 
@@ -1683,7 +1639,6 @@ if ($wmgUseExtensions['TemplateWizard'] && $wmgUseExtensions['TemplateData'] && 
 if ($wmgUseExtensions['TextExtracts']) {
   wfLoadExtension('TextExtracts');
   $wgExtractsExtendOpenSearchXml = true;
-  // 1.43+
   $wgExtractsExtendRestSearch = true;
 }
 
@@ -1792,7 +1747,6 @@ if ($wmgUseSkins['Timeless']) {
 //<< Vector >>
 
 wfLoadSkin('Vector');
-// 1.43+
 $wgVectorFontSizeConfigurableOptions['exclude'] = [];
 $wgVectorLanguageInHeader = [
   'logged_in' => false,
@@ -1800,13 +1754,10 @@ $wgVectorLanguageInHeader = [
 ];
 $wgVectorMaxWidthOptions['exclude'] = [];
 $wgVectorResponsive = true;
-// Removed in MediaWiki 1.43
-$wgVectorShareUserScripts = false;
 // Removed in MediaWiki 1.44
 $wgVectorStickyHeader['logged_out'] = true;
 
 $wgDefaultUserOptions['vector-limited-width'] = 0;
-// 1.43+
 $wgDefaultUserOptions['vector-theme'] = 'os';
 
 //< Load other settings >
