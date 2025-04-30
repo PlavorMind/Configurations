@@ -386,6 +386,7 @@ $wgExternalLinkTarget = '_blank';
 $wgMaxTemplateDepth = 5;
 $wgNoFollowDomainExceptions = [];
 // 1.43+
+// This is same as the default in MediaWiki 1.44 or newer.
 $wgParserEnableLegacyHeadingDOM = false;
 $wgTranscludeCacheExpiry = $wmgCacheExpiry;
 // Only allow HTTP and HTTPS protocols in links
@@ -1331,6 +1332,8 @@ if ($wmgGlobalAccountMode !== null) {
   // 1.43+
   $wgGlobalBlockingAutoblockExpiry = $wgAutoblockExpiry;
   // 1.43+
+  // $wgGlobalBlockingCentralWiki
+  // 1.43+
   $wgGlobalBlockingCentralWikiContentLanguage = 'en';
   $wgGlobalBlockingCIDRLimit = $wmgCIDRLimit;
   /*
@@ -1680,6 +1683,8 @@ if ($wmgUseExtensions['TemplateWizard'] && $wmgUseExtensions['TemplateData'] && 
 if ($wmgUseExtensions['TextExtracts']) {
   wfLoadExtension('TextExtracts');
   $wgExtractsExtendOpenSearchXml = true;
+  // 1.43+
+  $wgExtractsExtendRestSearch = true;
 }
 
 //<< Thanks >>
