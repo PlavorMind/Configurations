@@ -48,7 +48,6 @@ $wgLocalInterwikis = ['central'];
 
 //< Parser >
 
-// 1.43+
 $wgParserEnableUserLanguage = true;
 
 //< User rights, access control and monitoring >
@@ -68,7 +67,6 @@ $wgUseCopyrightUpload = true;
 
 //< Category >
 
-// 1.43+
 $wgSortedCategories = true;
 
 //< Logging >
@@ -77,7 +75,6 @@ $wgFilterLogTypes['create'] = true;
 
 //< Miscellaneous settings >
 
-// 1.43+
 $wgEnableProtectionIndicators = true;
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
 $wgUseCodexSpecialBlock = true;
@@ -126,18 +123,10 @@ $wgVisualEditorEnableVisualSectionEditing = true;
 
 // This is same as the default in MediaWiki 1.44 or newer.
 $wgMinervaNightMode['base'] = true;
-/*
-1.43+
-This is same as the default in MediaWiki 1.44 or newer.
-*/
+// This is same as the default in MediaWiki 1.44 or newer.
 $wgMinervaNightMode['loggedin'] = true;
 
 //<< Vector >>
 
-$wgVectorNightMode = [
-  // This is same as the default in MediaWiki 1.43 or newer.
-  'logged_in' => true,
-  'logged_out' => true
-];
-// 1.43+
+$wgVectorNightMode['logged_out'] = true;
 $wgVectorWrapTablesTemporary = true;
