@@ -97,6 +97,11 @@ $wgCiteUseLegacyBacklinkLabels = false;
 
 $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
 
+//<< CodeMirror >>
+
+// Experimental
+$wgCodeMirrorV6 = true;
+
 //<< Nuke >>
 
 // 1.44+
