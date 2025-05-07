@@ -96,8 +96,16 @@ $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
 
 //<< CodeMirror >>
 
-// Experimental
-$wgCodeMirrorV6 = true;
+/*
+1.44+
+Experimental
+Merge streagy of this setting is array_merge.
+*/
+$wgCodeMirrorContentModels = [
+  'css',
+  'javascript',
+  'json',
+];
 
 //<< Nuke >>
 
