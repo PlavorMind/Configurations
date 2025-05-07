@@ -74,7 +74,6 @@ $wmgUseExtensions = [
   'OATHAuth' => true,
   'PageImages' => false,
   'ParserFunctions' => true,
-  'Parsoid' => false,
   // This extension should not be disabled on wikis with global account enabled.
   'PlavorMindTools' => true,
   'Poem' => false,
@@ -1477,12 +1476,6 @@ if ($wmgUseExtensions['PageImages']) {
 if ($wmgUseExtensions['ParserFunctions']) {
   wfLoadExtension('ParserFunctions');
   $wgPFEnableStringFunctions = true;
-}
-
-//<< Parsoid >>
-
-if ($wmgUseExtensions['Parsoid']) {
-  wfLoadExtension('Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json");
 }
 
 //<< PlavorMindTools >>
