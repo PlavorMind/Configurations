@@ -1176,8 +1176,9 @@ if ($wmgUseExtensions['CodeEditor'] && $wmgUseExtensions['WikiEditor']) {
 
 //<< CodeMirror >>
 
-if ($wmgUseExtensions['CodeMirror'] && ($wmgUseExtensions['VisualEditor'] || $wmgUseExtensions['WikiEditor'])) {
+if ($wmgUseExtensions['CodeMirror']) {
   wfLoadExtension('CodeMirror');
+  $wgCodeMirrorV6 = true;
 }
 
 //<< CommonsMetadata >>
@@ -1757,6 +1758,7 @@ $wgVectorResponsive = true;
 // Removed in MediaWiki 1.44
 $wgVectorStickyHeader['logged_out'] = true;
 
+$wgDefaultUserOptions['vector-font-size'] = 1;
 $wgDefaultUserOptions['vector-limited-width'] = 0;
 $wgDefaultUserOptions['vector-theme'] = 'os';
 
