@@ -1217,6 +1217,15 @@ if ($wmgUseExtensions['ConfirmEdit']) {
   if ($wmgGlobalAccountMode !== 'centralauth') {
     $wgGroupPermissions['steward']['skipcaptcha'] = true;
   }
+
+  if (version_compare(MW_VERSION, '1.45', '>=')) {
+    /*
+    This setting needs to be explicitly set in MediaWiki 1.45 or newer:
+    * https://gerrit.wikimedia.org/r/c/mediawiki/extensions/ConfirmEdit/+/1148465
+    * https://gerrit.wikimedia.org/r/c/mediawiki/extensions/ConfirmEdit/+/1148879
+    */
+    $wgCaptchaClass = 'hCaptcha';
+  }
 }
 
 //<< DiscussionTools >>
