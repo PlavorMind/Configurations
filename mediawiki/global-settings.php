@@ -337,6 +337,7 @@ $wgSessionCacheType = $wmgCacheType;
 
 //< Language, regional and character encoding settings >
 
+// Removed in MediaWiki 1.45
 $wgAllowRawHtmlCopyrightMessages = false;
 $wgAllUnicodeFixes = true;
 
@@ -382,7 +383,10 @@ $wgEnableScaryTranscluding = true;
 $wgExternalLinkTarget = '_blank';
 $wgMaxTemplateDepth = 5;
 $wgNoFollowDomainExceptions = [];
-// This is same as the default in MediaWiki 1.44 or newer.
+/*
+This is same as the default in MediaWiki 1.44 or newer.
+Removed in MediaWiki 1.45
+*/
 $wgParserEnableLegacyHeadingDOM = false;
 $wgTranscludeCacheExpiry = $wmgCacheExpiry;
 // Only allow HTTP and HTTPS protocols in links
