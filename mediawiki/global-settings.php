@@ -1224,7 +1224,7 @@ if ($wmgUseExtensions['ConfirmEdit']) {
     * https://gerrit.wikimedia.org/r/c/mediawiki/extensions/ConfirmEdit/+/1148465
     * https://gerrit.wikimedia.org/r/c/mediawiki/extensions/ConfirmEdit/+/1148879
     */
-    $wgCaptchaClass = 'hCaptcha';
+    $wgCaptchaClass = 'HCaptcha';
   }
 }
 
