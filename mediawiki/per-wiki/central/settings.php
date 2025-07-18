@@ -112,6 +112,11 @@ $wgCodeMirrorContentModels = [
 // 1.44+
 $wgNukeUIType = 'codex';
 
+//<< Scribunto >>
+
+// 1.45+
+$wgScribuntoUseCodeMirror = true;
+
 //<< TemplateData >>
 
 // 1.44+
