@@ -301,6 +301,7 @@ if ($wmgGlobalAccountMode === 'shared-db') {
 
 $wgPageLanguageUseDB = true;
 $wgRevisionCacheExpiry = $wmgCacheExpiry;
+// Removed in MediaWiki 1.45
 $wgRevisionSlotsCacheExpiry = [
   'local' => $wmgCacheExpiry,
   'WAN' => $wmgCacheExpiry
