@@ -985,6 +985,10 @@ if ($wmgUseExtensions['AbuseFilter']) {
       'abusefilter-revert' => false,
       'abusefilter-view-private' => false
     ],
+    'user' => [
+      // 1.45+
+      'abusefilter-blocked-external-domains-log' => false,
+    ],
     'moderator' => [
       'abusefilter-log-detail' => true
     ],
@@ -1003,6 +1007,8 @@ if ($wmgUseExtensions['AbuseFilter']) {
   else {
     $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['steward'], [
       'abusefilter-access-protected-vars' => true,
+      // 1.45+
+      'abusefilter-blocked-external-domains-log' => true,
       'abusefilter-bypass-blocked-external-domains' => true,
       'abusefilter-hidden-log' => true,
       'abusefilter-hide-log' => true,
@@ -1147,6 +1153,8 @@ if ($wmgUseExtensions['CheckUser']) {
       'groups' => ['steward']
     ];
     $wgCheckUserGlobalContributionsCentralWikiId = $wmgCentralDB;
+    // 1.45+
+    $wgCheckUserUserInfoCardCentralWikiId = $wmgCentralDB;
   }
   else {
     $wgGroupPermissions['steward']['checkuser'] = true;
@@ -1253,6 +1261,8 @@ if ($wmgUseExtensions['Echo']) {
   $wgEchoMaxMentionsInEditSummary = 10;
   // This is also the number of maximum notifications for a single user to have.
   $wgEchoMaxUpdateCount = 100;
+  // 1.45+
+  // $wgEchoMentionsInEditSummaryBots
   $wgEchoMentionStatusNotifications = true;
   // $wgEchoNotificationIcons
   $wgEchoOnWikiBlacklist = null;
