@@ -98,7 +98,7 @@ $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
 
 /*
 1.44+
-Experimental
+Removed in MediaWiki 1.45
 Merge streagy of this setting is array_merge.
 */
 $wgCodeMirrorContentModels = [
@@ -106,6 +106,12 @@ $wgCodeMirrorContentModels = [
   'javascript',
   'json',
 ];
+// 1.45+
+$wgCodeMirrorEnabledModes['css'] = true;
+// 1.45+
+$wgCodeMirrorEnabledModes['javascript'] = true;
+// 1.45+
+$wgCodeMirrorEnabledModes['json'] = true;
 
 //<< Nuke >>
 
