@@ -96,26 +96,22 @@ $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
 
 //<< CodeMirror >>
 
-if (version_compare(MW_VERSION, '1.45', '<')) {
-  /*
-  1.44+
-  Removed in MediaWiki 1.45
-  Merge streagy of this setting is array_merge.
-  */
-  $wgCodeMirrorContentModels = [
-    'css',
-    'javascript',
-    'json',
-  ];
-}
-else {
-  // 1.45+
-  $wgCodeMirrorEnabledModes['css'] = true;
-  // 1.45+
-  $wgCodeMirrorEnabledModes['javascript'] = true;
-  // 1.45+
-  $wgCodeMirrorEnabledModes['json'] = true;
-}
+/*
+1.44+
+Removed in MediaWiki 1.45
+Merge streagy of this setting is array_merge.
+*/
+$wgCodeMirrorContentModels = [
+  'css',
+  'javascript',
+  'json',
+];
+// 1.45+
+$wgCodeMirrorEnabledModes['css'] = true;
+// 1.45+
+$wgCodeMirrorEnabledModes['javascript'] = true;
+// 1.45+
+$wgCodeMirrorEnabledModes['json'] = true;
 
 //<< Nuke >>
 
