@@ -775,6 +775,7 @@ $wgCascadingRestrictionLevels = [
   'editprotected-steward'
 ];
 $wgDeleteRevisionsLimit = 250;
+// Removed in MediaWiki 1.45
 $wgEnablePartialActionBlocks = true;
 $wgRestrictionLevels = [
   '',
@@ -1076,6 +1077,8 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgCentralAuthAutomaticVanishWiki = $wmgCentralDB;
   $wgCentralAuthAutoMigrate = true;
   $wgCentralAuthAutoMigrateNonGlobalAccounts = true;
+  // 1.45+
+  $wgCentralAuthCentralWiki = $wmgCentralDB;
   $wgCentralAuthCookies = true;
   $wgCentralAuthGlobalBlockInterwikiPrefix = 'central';
   $wgCentralAuthGlobalPasswordPolicies['steward'] = $wgPasswordPolicy['policies']['steward'];
@@ -1117,6 +1120,11 @@ if ($wmgUseExtensions['CheckUser']) {
   // This is same as the default in MediaWiki 1.44 or newer.
   $wgCheckUserLogLogins = true;
   $wgCheckUserMaxBlocks = 10;
+  /*
+  1.45+
+  Experimental
+  */
+  $wgCheckUserSuggestedInvestigationsEnabled = true;
 
   $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
     'checkuser' => [
@@ -1469,11 +1477,19 @@ if ($wmgUseExtensions['Nuke']) {
 
 if ($wmgUseExtensions['OATHAuth']) {
   wfLoadExtension('OATHAuth');
+  // 1.45+
+  $wgOATHAllowMultipleModules = true;
+  // 1.45+
+  $wgOATHAuthNewUI = true;
   $wgOATHRequiredForGroups = ['steward'];
 
+  // 1.45+
+  $wgGroupPermissions['oathauth-twofactorauth']['oathauth-enable'] = false;
   $wgGroupPermissions['sysop']['oathauth-disable-for-user'] = false;
   $wgGroupPermissions['sysop']['oathauth-verify-user'] = false;
   $wgGroupPermissions['sysop']['oathauth-view-log'] = false;
+  // 1 minute
+  $wgReauthenticateTime['oathauth-enable'] = 60;
 
   if ($wmgGlobalAccountMode !== null) {
     $wgOATHAuthAccountPrefix = 'PlavorMind wikis';
@@ -1512,6 +1528,8 @@ if ($wmgUseExtensions['PlavorMindTools']) {
     'bureaucrat',
     'checkuser',
     'checkuser-temporary-account-viewer',
+    // 1.45+
+    'oathauth-twofactorauth',
     'push-subscription-manager',
     'steward',
     'suppress',
