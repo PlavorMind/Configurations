@@ -775,6 +775,7 @@ $wgCascadingRestrictionLevels = [
   'editprotected-steward'
 ];
 $wgDeleteRevisionsLimit = 250;
+// Removed in MediaWiki 1.45
 $wgEnablePartialActionBlocks = true;
 $wgRestrictionLevels = [
   '',
@@ -1469,11 +1470,17 @@ if ($wmgUseExtensions['Nuke']) {
 
 if ($wmgUseExtensions['OATHAuth']) {
   wfLoadExtension('OATHAuth');
+  // 1.45+
+  $wgOATHAllowMultipleModules = true;
   $wgOATHRequiredForGroups = ['steward'];
 
+  // 1.45+
+  $wgGroupPermissions['oathauth-twofactorauth']['oathauth-enable'] = false;
   $wgGroupPermissions['sysop']['oathauth-disable-for-user'] = false;
   $wgGroupPermissions['sysop']['oathauth-verify-user'] = false;
   $wgGroupPermissions['sysop']['oathauth-view-log'] = false;
+  // 1 minute
+  $wgReauthenticateTime['oathauth-enable'] = 60;
 
   if ($wmgGlobalAccountMode !== null) {
     $wgOATHAuthAccountPrefix = 'PlavorMind wikis';
@@ -1512,6 +1519,8 @@ if ($wmgUseExtensions['PlavorMindTools']) {
     'bureaucrat',
     'checkuser',
     'checkuser-temporary-account-viewer',
+    // 1.45+
+    'oathauth-twofactorauth',
     'push-subscription-manager',
     'steward',
     'suppress',
