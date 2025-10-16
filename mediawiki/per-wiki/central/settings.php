@@ -79,6 +79,11 @@ $wgEnableProtectionIndicators = true;
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
 $wgUseCodexSpecialBlock = true;
 
+//< Not listed >
+
+// 1.45+
+$wgUseLeximorph = true;
+
 //< Extensions >
 
 //<< AbuseFilter >>
