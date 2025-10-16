@@ -1077,6 +1077,8 @@ if ($wmgGlobalAccountMode === 'centralauth') {
   $wgCentralAuthAutomaticVanishWiki = $wmgCentralDB;
   $wgCentralAuthAutoMigrate = true;
   $wgCentralAuthAutoMigrateNonGlobalAccounts = true;
+  // 1.45+
+  $wgCentralAuthCentralWiki = $wmgCentralDB;
   $wgCentralAuthCookies = true;
   $wgCentralAuthGlobalBlockInterwikiPrefix = 'central';
   $wgCentralAuthGlobalPasswordPolicies['steward'] = $wgPasswordPolicy['policies']['steward'];
@@ -1118,6 +1120,11 @@ if ($wmgUseExtensions['CheckUser']) {
   // This is same as the default in MediaWiki 1.44 or newer.
   $wgCheckUserLogLogins = true;
   $wgCheckUserMaxBlocks = 10;
+  /*
+  1.45+
+  Experimental
+  */
+  $wgCheckUserSuggestedInvestigationsEnabled = true;
 
   $wgGroupPermissions = array_replace_recursive($wgGroupPermissions, [
     'checkuser' => [
