@@ -75,6 +75,7 @@ $wgFilterLogTypes['create'] = true;
 
 //< Miscellaneous settings >
 
+// This is same as the default in MediaWiki 1.45 or newer.
 $wgEnableProtectionIndicators = true;
 $wgSpecialContributeSkinsEnabled = ['vector-2022'];
 $wgUseCodexSpecialBlock = true;
