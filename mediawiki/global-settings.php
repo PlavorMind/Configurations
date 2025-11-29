@@ -1130,6 +1130,8 @@ if ($wmgUseExtensions['CheckUser']) {
     'checkuser' => [
       'checkuser' => false,
       'checkuser-log' => false,
+      // 1.45+
+      'checkuser-temporary-account-auto-reveal' => false,
       'checkuser-temporary-account-log' => false,
       'checkuser-temporary-account-no-preference' => false
     ],
@@ -1165,10 +1167,14 @@ if ($wmgUseExtensions['CheckUser']) {
     $wgCheckUserUserInfoCardCentralWikiId = $wmgCentralDB;
   }
   else {
-    $wgGroupPermissions['steward']['checkuser'] = true;
-    $wgGroupPermissions['steward']['checkuser-log'] = true;
-    $wgGroupPermissions['steward']['checkuser-temporary-account-log'] = true;
-    $wgGroupPermissions['steward']['checkuser-temporary-account-no-preference'] = true;
+    $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['steward'], [
+      'checkuser' => true,
+      'checkuser-log' => true,
+      // 1.44+
+      'checkuser-temporary-account-auto-reveal' => true,
+      'checkuser-temporary-account-log' => true,
+      'checkuser-temporary-account-no-preference' => true,
+    ]);
   }
 }
 
