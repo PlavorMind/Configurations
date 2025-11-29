@@ -619,6 +619,7 @@ $wgRemoveGroups = [
   'staff' => ['moderator'],
   'admin' => ['moderator', 'staff']
 ];
+// 1.46+
 $wgRestrictedGroups = [
   'moderator' => [
     'memberConditions' => [
