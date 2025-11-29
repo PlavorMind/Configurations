@@ -855,6 +855,8 @@ if (PHP_OS_FAMILY === 'Windows') {
 
 $wgGitBin = false;
 $wgGitRepositoryViewers['https:\\/\\/github\\.com\\/([\\w\\-.]+\\/[\\w\\-.]+)\\.git'] = 'https://github.com/$1/commit/%H';
+// 1.44+
+// $wgInstallerInitialPages
 
 if (PHP_SAPI !== 'cli') {
   $wgReadOnlyFile = "$wmgDataDirectory/read-only.txt";
@@ -925,8 +927,9 @@ $wgSkinsPreferred = ['vector-2022'];
 
 //< Not listed >
 
-// 1.44+
-// $wgInstallerInitialPages
+// 1.45+
+$wgEnableChangesListQueryPartitioning = true;
+
 
 //< Extension and skin usages >
 
