@@ -1538,6 +1538,8 @@ if ($wmgUseExtensions['OATHAuth']) {
   wfLoadExtension('OATHAuth');
   // 1.46+
   // $wgOATHMaxKeysPerUser
+  // 1.46+
+  $wgOATHNewPasskeyFeatures = true;
   $wgOATHRequiredForGroups = ['steward'];
 
   // 1.45+
