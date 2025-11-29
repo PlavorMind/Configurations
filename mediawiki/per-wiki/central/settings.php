@@ -82,6 +82,8 @@ $wgUseCodexSpecialBlock = true;
 
 //< Not listed >
 
+// 1.46+
+$wgEnableWatchlistLabels = true;
 // 1.45+
 $wgUseLeximorph = true;
 
