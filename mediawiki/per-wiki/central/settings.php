@@ -93,6 +93,8 @@ $wgAbuseFilterEnableBlockedExternalDomain = true;
 
 //<< Cite >>
 
+// 1.45+
+$wgCiteSubRefMergeInDevelopment = true;
 // 1.44+
 $wgCiteUseLegacyBacklinkLabels = false;
 
