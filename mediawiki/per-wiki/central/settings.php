@@ -144,6 +144,8 @@ $wgTemplateDataMaxFavorites = 10;
 
 // Experimental
 $wgVisualEditorAllowExternalLinkPaste = true;
+// 1.46+
+$wgVisualEditorEnableSectionEditingFullPageButtons = true;
 $wgVisualEditorEnableVisualSectionEditing = true;
 
 //< Skins >
