@@ -619,6 +619,53 @@ $wgRemoveGroups = [
   'staff' => ['moderator'],
   'admin' => ['moderator', 'staff']
 ];
+$wgRestrictedGroups = [
+  'moderator' => [
+    'memberConditions' => [
+      '!',
+      [
+        '|',
+        [
+          APCOND_INGROUPS,
+          'staff',
+        ],
+        [
+          APCOND_INGROUPS,
+          'admin',
+        ],
+        [
+          APCOND_INGROUPS,
+          'steward',
+        ],
+      ],
+    ],
+  ],
+  'staff' => [
+    'memberConditions' => [
+      '!',
+      [
+        '|',
+        [
+          APCOND_INGROUPS,
+          'admin',
+        ],
+        [
+          APCOND_INGROUPS,
+          'steward',
+        ],
+      ],
+    ],
+  ],
+  'admin' => [
+    'memberConditions' => [
+      '!',
+      [
+        APCOND_INGROUPS,
+        'steward',
+      ],
+    ],
+  ],
+];
 
 if ($wmgGlobalAccountMode !== 'centralauth') {
   $wgGroupInheritsPermissions['steward'] = 'admin';
@@ -630,6 +677,8 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
     'editsitejs' => true,
     'edituserjs' => true,
     'hideuser' => true,
+    // 1.46+
+    'ignore-restricted-groups' => true,
     'nominornewtalk' => true,
     'noratelimit' => true,
     'override-export-depth' => true,
@@ -929,7 +978,8 @@ $wgSkinsPreferred = ['vector-2022'];
 
 // 1.45+
 $wgEnableChangesListQueryPartitioning = true;
-
+// 1.46+
+// $wgUserJsPrefLimit
 
 //< Extension and skin usages >
 
@@ -1486,6 +1536,8 @@ if ($wmgUseExtensions['Nuke']) {
 
 if ($wmgUseExtensions['OATHAuth']) {
   wfLoadExtension('OATHAuth');
+  // 1.46+
+  // $wgOATHMaxKeysPerUser
   $wgOATHRequiredForGroups = ['steward'];
 
   // 1.45+
