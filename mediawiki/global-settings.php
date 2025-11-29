@@ -1486,10 +1486,6 @@ if ($wmgUseExtensions['Nuke']) {
 
 if ($wmgUseExtensions['OATHAuth']) {
   wfLoadExtension('OATHAuth');
-  // 1.45+
-  $wgOATHAllowMultipleModules = true;
-  // 1.45+
-  $wgOATHAuthNewUI = true;
   $wgOATHRequiredForGroups = ['steward'];
 
   // 1.45+
