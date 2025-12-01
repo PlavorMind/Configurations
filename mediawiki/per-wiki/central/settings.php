@@ -97,7 +97,6 @@ $wgAbuseFilterEnableBlockedExternalDomain = true;
 
 // 1.45+
 $wgCiteSubRefMergeInDevelopment = true;
-// 1.44+
 $wgCiteUseLegacyBacklinkLabels = false;
 
 //<< CiteThisPage >>
@@ -107,7 +106,6 @@ $wgCiteThisPageAdditionalNamespaces[NS_PROJECT] = true;
 //<< CodeMirror >>
 
 /*
-1.44+
 Removed in MediaWiki 1.45
 Merge streagy of this setting is array_merge.
 */
@@ -125,7 +123,6 @@ $wgCodeMirrorEnabledModes['json'] = true;
 
 //<< Nuke >>
 
-// 1.44+
 $wgNukeUIType = 'codex';
 
 //<< Scribunto >>
@@ -135,7 +132,6 @@ $wgScribuntoUseCodeMirror = true;
 
 //<< TemplateData >>
 
-// 1.44+
 $wgTemplateDataEnableDiscovery = true;
 // Experimental
 $wgTemplateDataMaxFavorites = 10;
