@@ -664,8 +664,6 @@ if ($wmgGlobalAccountMode !== 'centralauth') {
     'editsitejs' => true,
     'edituserjs' => true,
     'hideuser' => true,
-    // 1.46+
-    'ignore-restricted-groups' => true,
     'nominornewtalk' => true,
     'noratelimit' => true,
     'override-export-depth' => true,
