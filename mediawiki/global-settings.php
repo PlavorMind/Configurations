@@ -62,7 +62,6 @@ $wmgUseExtensions = [
   'GlobalCssJs' => true,
   'GlobalUserPage' => true,
   'InputBox' => false,
-  'Interwiki' => true,
   'Josa' => false,
   'Linter' => false,
   // This extension should not be disabled on wikis with global account enabled.
@@ -258,7 +257,6 @@ $wgSVGNativeRendering = true;
 
 $wgGenerateThumbnailOnParse = false;
 $wgThumbnailScriptPath = "$wgScriptPath/thumb.php";
-// 1.44+
 // $wgThumbnailSteps
 
 //< Email settings >
@@ -280,9 +278,7 @@ if ($wmgGlobalAccountMode !== null) {
 
   unset($wiki, $wikis);
   $wgVirtualDomainsMapping['virtual-botpasswords']['db'] = $wmgCentralDB;
-  // 1.44+
   $wgVirtualDomainsMapping['virtual-interwiki']['db'] = $wmgCentralDB;
-  // 1.44+
   $wgVirtualDomainsMapping['virtual-interwiki-interlanguage']['db'] = $wmgCentralDB;
 }
 
@@ -384,10 +380,7 @@ $wgEnableScaryTranscluding = true;
 $wgExternalLinkTarget = '_blank';
 $wgMaxTemplateDepth = 5;
 $wgNoFollowDomainExceptions = [];
-/*
-This is same as the default in MediaWiki 1.44 or newer.
-Removed in MediaWiki 1.45
-*/
+// Removed in MediaWiki 1.45
 $wgParserEnableLegacyHeadingDOM = false;
 $wgTranscludeCacheExpiry = $wmgCacheExpiry;
 // Only allow HTTP and HTTPS protocols in links
@@ -588,7 +581,6 @@ $wgGroupPermissions = [
     'edituserjson' => true,
     'import' => true,
     'importupload' => true,
-    // This permission has been moved from Interwiki extension to the core in MediaWiki 1.44.
     'interwiki' => true,
     'mergehistory' => true
   ]
@@ -899,7 +891,6 @@ if (PHP_OS_FAMILY === 'Windows') {
 
 $wgGitBin = false;
 $wgGitRepositoryViewers['https:\\/\\/github\\.com\\/([\\w\\-.]+\\/[\\w\\-.]+)\\.git'] = 'https://github.com/$1/commit/%H';
-// 1.44+
 // $wgInstallerInitialPages
 
 if (PHP_SAPI !== 'cli') {
@@ -1121,7 +1112,6 @@ if ($wmgUseExtensions['CategoryTree']) {
 if ($wmgGlobalAccountMode === 'centralauth') {
   // This extension requires running update.php.
   wfLoadExtension('CentralAuth');
-  // 1.44+
   $wgCentralAuthAutomaticVanishWiki = $wmgCentralDB;
   $wgCentralAuthAutoMigrate = true;
   $wgCentralAuthAutoMigrateNonGlobalAccounts = true;
@@ -1163,10 +1153,7 @@ if ($wmgUseExtensions['CheckUser']) {
   // This extension requires running update.php.
   wfLoadExtension('CheckUser');
   $wgCheckUserCIDRLimit = $wmgCIDRLimit;
-  // 1.44+
   $wgCheckUserEnableTempAccountsOnboardingDialog = false;
-  // This is same as the default in MediaWiki 1.44 or newer.
-  $wgCheckUserLogLogins = true;
   $wgCheckUserMaxBlocks = 10;
   /*
   1.45+
@@ -1183,11 +1170,6 @@ if ($wmgUseExtensions['CheckUser']) {
       'checkuser-temporary-account-log' => false,
       'checkuser-temporary-account-no-preference' => false
     ],
-    // This user group has been removed in MediaWiki 1.44.
-    'checkuser-temporary-account-viewer' => [
-      'checkuser-temporary-account' => false
-    ],
-    // 1.44+
     'temporary-account-viewer' => [
       'checkuser-temporary-account' => false
     ]
@@ -1218,7 +1200,6 @@ if ($wmgUseExtensions['CheckUser']) {
     $wgGroupPermissions['steward'] = array_merge($wgGroupPermissions['steward'], [
       'checkuser' => true,
       'checkuser-log' => true,
-      // 1.44+
       'checkuser-temporary-account-auto-reveal' => true,
       'checkuser-temporary-account-log' => true,
       'checkuser-temporary-account-no-preference' => true,
@@ -1230,9 +1211,6 @@ if ($wmgUseExtensions['CheckUser']) {
 
 if ($wmgUseExtensions['Cite']) {
   wfLoadExtension('Cite');
-  // This setting has been renamed to $wgCiteSubReferencing in MediaWiki 1.44.
-  $wgCiteBookReferencing = true;
-  // 1.44+
   $wgCiteSubReferencing = true;
 }
 
@@ -1384,9 +1362,6 @@ if ($wmgGlobalAccountMode !== null) {
   // $wgGlobalBlockingCentralWiki
   $wgGlobalBlockingCentralWikiContentLanguage = 'en';
   $wgGlobalBlockingCIDRLimit = $wmgCIDRLimit;
-  // This is same as the default in MediaWiki 1.44 or newer.
-  $wgGlobalBlockingEnableAutoblocks = true;
-  // 1.44+
   $wgGlobalBlockingMassGlobalBlockMaxTargets = 10;
   $wgGlobalBlockRemoteReasonUrl = "{$wmgCentralBaseURL}{$wgScriptPath}/api.php";
   $wgGroupPermissions['sysop']['globalblock-whitelist'] = false;
@@ -1435,21 +1410,6 @@ if ($wmgUseExtensions['GlobalUserPage'] && $wmgGlobalAccountMode !== null) {
 
 if ($wmgUseExtensions['InputBox']) {
   wfLoadExtension('InputBox');
-}
-
-//<< Interwiki >>
-
-if (version_compare(MW_VERSION, '1.44', '<')) {
-  if ($wmgUseExtensions['Interwiki']) {
-    wfLoadExtension('Interwiki');
-
-    if ($wmgGlobalAccountMode !== null) {
-      $wgInterwikiCentralDB = $wmgCentralDB;
-    }
-  }
-  else {
-    $wgGroupPermissions['admin']['interwiki'] = false;
-  }
 }
 
 //<< Josa >>
@@ -1508,7 +1468,6 @@ if ($wmgUseExtensions['MultimediaViewer']) {
 
 if ($wmgUseExtensions['Nuke']) {
   wfLoadExtension('Nuke');
-  // 1.44+
   // $wgNukeMaxAge
 
   $wgGroupPermissions['sysop']['nuke'] = false;
@@ -1573,14 +1532,12 @@ if ($wmgUseExtensions['PlavorMindTools']) {
     'bot',
     'bureaucrat',
     'checkuser',
-    'checkuser-temporary-account-viewer',
     // 1.45+
     'oathauth-twofactorauth',
     'push-subscription-manager',
     'steward',
     'suppress',
     'sysop',
-    // 1.44+
     'temporary-account-viewer'
   ];
   $wgCUGEnable = true;
@@ -1835,13 +1792,7 @@ $wgVectorLanguageInHeader = [
   'logged_out' => false
 ];
 $wgVectorMaxWidthOptions['exclude'] = [];
-// This is same as the default in MediaWiki 1.44 or newer.
-$wgMinervaNightMode['base'] = true;
-// This is same as the default in MediaWiki 1.44 or newer.
-$wgMinervaNightMode['loggedin'] = true;
 $wgVectorResponsive = true;
-// Removed in MediaWiki 1.44
-$wgVectorStickyHeader['logged_out'] = true;
 
 $wgDefaultUserOptions['vector-font-size'] = 1;
 $wgDefaultUserOptions['vector-limited-width'] = 0;
