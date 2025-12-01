@@ -625,19 +625,16 @@ $wgRestrictedGroups = [
     'memberConditions' => [
       '!',
       [
-        '|',
-        [
-          APCOND_INGROUPS,
-          'staff',
-        ],
-        [
-          APCOND_INGROUPS,
-          'admin',
-        ],
-        [
-          APCOND_INGROUPS,
-          'steward',
-        ],
+        APCOND_INGROUPS,
+        'staff',
+      ],
+      [
+        APCOND_INGROUPS,
+        'admin',
+      ],
+      [
+        APCOND_INGROUPS,
+        'steward',
       ],
     ],
   ],
@@ -645,15 +642,12 @@ $wgRestrictedGroups = [
     'memberConditions' => [
       '!',
       [
-        '|',
-        [
-          APCOND_INGROUPS,
-          'admin',
-        ],
-        [
-          APCOND_INGROUPS,
-          'steward',
-        ],
+        APCOND_INGROUPS,
+        'admin',
+      ],
+      [
+        APCOND_INGROUPS,
+        'steward',
       ],
     ],
   ],
@@ -1278,6 +1272,7 @@ if ($wmgUseExtensions['ConfirmEdit']) {
   // This completely blocks API login until the expiration.
   // 1 day
   $wgCaptchaBadLoginPerUserExpiration = 60 * 60 * 24;
+  $wgCaptchaClass = 'HCaptcha';
   $wgCaptchaTriggers['create'] = true;
   $wgCaptchaTriggers['sendemail'] = true;
   $wgCaptchaTriggersOnNamespace = [
@@ -1293,15 +1288,6 @@ if ($wmgUseExtensions['ConfirmEdit']) {
 
   if ($wmgGlobalAccountMode !== 'centralauth') {
     $wgGroupPermissions['steward']['skipcaptcha'] = true;
-  }
-
-  if (version_compare(MW_VERSION, '1.45', '>=')) {
-    /*
-    This setting needs to be explicitly set in MediaWiki 1.45 or newer:
-    * https://gerrit.wikimedia.org/r/c/mediawiki/extensions/ConfirmEdit/+/1148465
-    * https://gerrit.wikimedia.org/r/c/mediawiki/extensions/ConfirmEdit/+/1148879
-    */
-    $wgCaptchaClass = 'HCaptcha';
   }
 }
 
@@ -1849,6 +1835,10 @@ $wgVectorLanguageInHeader = [
   'logged_out' => false
 ];
 $wgVectorMaxWidthOptions['exclude'] = [];
+// This is same as the default in MediaWiki 1.44 or newer.
+$wgMinervaNightMode['base'] = true;
+// This is same as the default in MediaWiki 1.44 or newer.
+$wgMinervaNightMode['loggedin'] = true;
 $wgVectorResponsive = true;
 // Removed in MediaWiki 1.44
 $wgVectorStickyHeader['logged_out'] = true;
