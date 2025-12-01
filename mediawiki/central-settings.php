@@ -1,6 +1,8 @@
 <?php
 //< User rights, access control and monitoring >
 
+// 1.46+
+$wgGroupPermissions['steward']['ignore-restricted-groups'] = true;
 $wgGroupPermissions['steward']['userrights'] = true;
 
 if ($wmgGlobalAccountMode === 'shared-db') {
@@ -8,6 +10,8 @@ if ($wmgGlobalAccountMode === 'shared-db') {
   $wgGroupPermissions['steward']['editusercss'] = true;
   // This permission has been moved from Interwiki extension to the core in MediaWiki 1.44.
   $wgGroupPermissions['steward']['interwiki'] = true;
+  // 1.44+
+  $wgGroupPermissions['steward']['renameuser-global'] = true;
 }
 
 if ($wmgGlobalAccountMode !== null) {
